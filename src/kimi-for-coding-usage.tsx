@@ -54,7 +54,7 @@ function getUsageColor(used: number, limit: number): Color {
 }
 
 export default function Command() {
-  const { apiKey } = getPreferenceValues<{ apiKey: string }>();
+  const { apiKey } = getPreferenceValues<Preferences>();
 
   const { isLoading, data, error } = useFetch<UsageResponse>("https://api.kimi.com/coding/v1/usages", {
     headers: {
