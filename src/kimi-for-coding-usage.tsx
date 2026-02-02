@@ -43,7 +43,18 @@ function formatMembership(level: string): string {
 }
 
 function formatTimeUnit(timeUnit: string): string {
-  return timeUnit.replace("TIME_UNIT_", "").toLowerCase();
+  switch (timeUnit) {
+    case "TIME_UNIT_SECOND":
+      return "seconds";
+    case "TIME_UNIT_MINUTE":
+      return "minutes";
+    case "TIME_UNIT_HOUR":
+      return "hours";
+    case "TIME_UNIT_DAY":
+      return "days";
+    default:
+      return timeUnit.replace("TIME_UNIT_", "").toLowerCase();
+  }
 }
 
 function getUsageColor(used: number, limit: number): Color {
@@ -93,7 +104,7 @@ export default function Command() {
       )}
 
       {usage && (
-        <List.Section title="Overall Usage">
+        <List.Section title="Weekly Usage">
           <List.Item
             icon={Icon.BarChart}
             title="Usage"
@@ -118,7 +129,7 @@ export default function Command() {
         >
           <List.Item
             icon={Icon.BarChart}
-            title="Usage"
+            title="Rate Limit Details"
             accessories={[
               {
                 tag: {
