@@ -133,7 +133,7 @@ export default function Command() {
             accessories={[
               {
                 tag: {
-                  value: `${limit.detail.used}%`,
+                  value: `${limit.detail.used ?? "0"}%`,
                   color: getUsageColor(parseInt(limit.detail.used ?? "0"), parseInt(limit.detail.limit)),
                 },
               },
