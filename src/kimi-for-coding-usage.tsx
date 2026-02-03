@@ -3,7 +3,7 @@ import { useFetch } from "@raycast/utils";
 
 interface UsageDetail {
   limit: string;
-  used: string;
+  used?: string;
   remaining: string;
   resetTime: string;
 }
@@ -112,7 +112,7 @@ export default function Command() {
               {
                 tag: {
                   value: `${usage.used}%`,
-                  color: getUsageColor(parseInt(usage.used), parseInt(usage.limit)),
+                  color: getUsageColor(parseInt(usage.used ?? "0"), parseInt(usage.limit)),
                 },
               },
               { text: `${usage.remaining}% remaining` },
@@ -134,7 +134,7 @@ export default function Command() {
               {
                 tag: {
                   value: `${limit.detail.used}%`,
-                  color: getUsageColor(parseInt(limit.detail.used), parseInt(limit.detail.limit)),
+                  color: getUsageColor(parseInt(limit.detail.used ?? "0"), parseInt(limit.detail.limit)),
                 },
               },
               { text: `${limit.detail.remaining}% remaining` },
