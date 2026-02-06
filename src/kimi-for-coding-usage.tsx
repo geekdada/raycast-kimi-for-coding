@@ -111,11 +111,11 @@ export default function Command() {
             accessories={[
               {
                 tag: {
-                  value: `${usage.used}%`,
+                  value: `${usage.used ?? "0"}%`,
                   color: getUsageColor(parseInt(usage.used ?? "0"), parseInt(usage.limit)),
                 },
               },
-              { text: `${usage.remaining}% remaining` },
+              { text: `${usage.remaining ?? "0"}% remaining` },
             ]}
           />
           <List.Item icon={Icon.Clock} title="Resets At" accessories={[{ text: formatResetTime(usage.resetTime) }]} />
@@ -137,7 +137,7 @@ export default function Command() {
                   color: getUsageColor(parseInt(limit.detail.used ?? "0"), parseInt(limit.detail.limit)),
                 },
               },
-              { text: `${limit.detail.remaining}% remaining` },
+              { text: `${limit.detail.remaining ?? "0"}% remaining` },
             ]}
           />
           <List.Item
